@@ -1,5 +1,6 @@
 To install it, download the source code and put them in source/repos.  From the windows powershell or cmd in source/repos/StandaloneAngularTemplate folder, TYPE:
-```dotnet new --install .
+```
+dotnet new --install .
 ```
 or
 ```
