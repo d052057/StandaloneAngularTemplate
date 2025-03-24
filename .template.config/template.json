@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Yitong Phou",
+  "classifications": ["Web", "Angular", "Standalone"],
+  "identity": "standaloneangulartemplate.template",
+  "name": "Standalone Angular with .NET",
+  "shortName": "standalone-angular",
+  "sourceName": "StandaloneAngularTemplate",
+  "preferNameDirectory": true,
+  "symbols": {
+    "ProjectName": {
+      "type": "generated",
+      "generator": "identity"
+    }
+  }
+}
