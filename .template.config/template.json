@@ -6,11 +6,5 @@
   "name": "Standalone Angular with .NET",
   "shortName": "standalone-angular",
   "sourceName": "StandaloneAngularTemplate",
-  "preferNameDirectory": true,
-  "symbols": {
-    "ProjectName": {
-      "type": "generated",
-      "generator": "identity"
-    }
-  }
+  "preferNameDirectory": true
 }
