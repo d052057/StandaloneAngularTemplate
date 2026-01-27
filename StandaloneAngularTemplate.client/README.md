@@ -69,3 +69,10 @@ dotnet new install .
 ## to clone the template to a new project
           
 dotnet new standalone-angular -o <your NewProject>
+
+## cannot run "npm start" 
+npm uninstall @angular/cli
+npm i @angular/cli@21.1.1
+npm install
+ng build
+#@ should work
