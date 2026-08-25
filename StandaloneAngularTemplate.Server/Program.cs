@@ -6,16 +6,24 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddJsonFile("appsettings.Local.json", optional: true, reloadOnChange: true);
 
 // Add services to the container.
-builder.Services.AddCors();
+// Allowed origins are configured per environment (see appsettings.*.json).
+// The SPA is served same-origin by this app (MapFallbackToFile below), so CORS
+// is only needed for external clients calling the API directly - keep the list explicit.
+var allowedOrigins = builder.Configuration.GetSection("AllowedOrigins").Get<string[]>() ?? [];
+
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+        policy.WithOrigins(allowedOrigins)
+              .AllowAnyHeader()
+              .AllowAnyMethod());
+});
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
-app.UseCors(opt =>
-{
-    opt.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
-});
+app.UseCors();
 
 app.UseDefaultFiles();
 app.MapStaticAssets();

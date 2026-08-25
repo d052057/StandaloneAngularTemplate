@@ -1,6 +1,6 @@
 # Test
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.1.
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.1.5. See `package.json` for the exact pinned version.
 
 ## Development server
 
@@ -70,9 +70,12 @@ dotnet new install .
           
 dotnet new standalone-angular -o <your NewProject>
 
-## cannot run "npm start" 
-npm uninstall @angular/cli
-npm i @angular/cli@21.1.1
+## cannot run "npm start"
+If `npm start` fails right after creating a new project from this template, `node_modules`
+sometimes ends up incomplete. Fix with a clean reinstall:
+
+```
+rmdir /s /q node_modules
 npm install
 ng build
-#@ should work
+```
