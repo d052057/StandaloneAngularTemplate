@@ -1,4 +1,6 @@
-The template is based upon VS2022, C# Dotnet 9.0, Angular v22.x, Bootstrap and Bootstrap-icons. Home page is a bootstrap Nav bar plus a getting-started/setup guide (same content as `INSTALL.html`) — replace it with your own content whenever you're ready.
+The template is based upon VS2022, C# Dotnet 9.0, Angular v22.x, Bootstrap and Bootstrap-icons. Home page is a bootstrap Nav bar plus a getting-started/setup guide (same content as [docs/INSTALL.html](docs/INSTALL.html)) — replace it with your own content whenever you're ready.
+
+See the full install guide: [docs/INSTALL.html](docs/INSTALL.html) (or the hosted version once GitHub Pages is enabled for this repo, at `https://d052057.github.io/StandaloneAngularTemplate/INSTALL.html`).
 
 ## CORS
 

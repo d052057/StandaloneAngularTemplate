@@ -7,11 +7,22 @@
   "shortName": "standalone-angular",
   "sourceName": "StandaloneAngularTemplate",
   "preferNameDirectory": true,
+  "symbols": {
+    "clientNameLowerCase": {
+      "type": "generated",
+      "generator": "casing",
+      "parameters": {
+        "source": "name",
+        "toLower": true
+      },
+      "replaces": "standaloneangulartemplate"
+    }
+  },
   "sources": [
     {
       "exclude": [
         "README.md",
-        "INSTALL.html",
+        "docs/**",
         "**/CHANGELOG.md"
       ]
     }
