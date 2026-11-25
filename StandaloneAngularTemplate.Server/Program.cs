@@ -1,3 +1,4 @@
+using Scalar.AspNetCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Local development secrets (connection strings, API keys, JWT key, etc.)
@@ -32,11 +33,7 @@ app.MapStaticAssets();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
-    app.UseSwaggerUI(
-        options =>
-        {
-            options.SwaggerEndpoint("../openapi/v1.json", "version 1");
-        });
+    app.MapScalarApiReference();
 }
 app.UseHttpsRedirection();
 

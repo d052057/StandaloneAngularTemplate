@@ -1,0 +1,43 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "API (WSL profile)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "prepare-app",
+      "program": "${workspaceFolder}/${workspaceFolderBasename}.Server/bin/Debug/net10.0/${workspaceFolderBasename}.Server.dll",
+      "cwd": "${workspaceFolder}/${workspaceFolderBasename}.Server",
+      "launchSettingsFilePath": "${workspaceFolder}/${workspaceFolderBasename}.Server/Properties/launchSettings.json",
+      "launchSettingsProfile": "WSL",
+      "stopAtEntry": false,
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "Now listening on: (https://localhost:\\d+)",
+        "uriFormat": "%s/scalar"
+      }
+    },
+    {
+      "name": "Angular (chrome)",
+      "type": "chrome",
+      "request": "launch",
+      "preLaunchTask": "ng-serve-after-api",
+      "url": "https://localhost:4200",
+      "webRoot": "${workspaceFolder}/${workspaceFolderBasename}.client"
+    },
+    {
+      "name": "Attach to API",
+      "type": "coreclr",
+      "request": "attach",
+      "processId": "${command:pickProcess}"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Full Stack (F5)",
+      "configurations": ["API (WSL profile)", "Angular (chrome)"],
+      "stopAll": true,
+      "presentation": { "order": 1 }
+    }
+  ]
+}

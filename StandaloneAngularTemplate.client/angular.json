@@ -103,7 +103,7 @@
           "defaultConfiguration": "development",
           "options": {
             "proxyConfig": "src/proxy.conf.js",
-            "port": 57729
+            "port": 4200
           }
         }
       }

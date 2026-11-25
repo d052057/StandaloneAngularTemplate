@@ -1,0 +1,55 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "free-ports",
+      "type": "shell",
+      "command": "node \"${workspaceFolder}/.vscode/dev-tools.mjs\" free 4200 5001",
+      "problemMatcher": []
+    },
+    {
+      "label": "build-server",
+      "type": "process",
+      "command": "dotnet",
+      "args": ["build", "${workspaceFolder}/${workspaceFolderBasename}.Server/${workspaceFolderBasename}.Server.csproj"],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "prepare-app",
+      "dependsOrder": "sequence",
+      "dependsOn": ["free-ports", "build-server"],
+      "problemMatcher": []
+    },
+    {
+      "label": "wait-for-api",
+      "type": "shell",
+      "command": "node \"${workspaceFolder}/.vscode/dev-tools.mjs\" wait 5001",
+      "problemMatcher": []
+    },
+    {
+      "label": "ng-serve-after-api",
+      "dependsOn": ["wait-for-api", "ng-serve"],
+      "dependsOrder": "sequence",
+      "problemMatcher": []
+    },
+    {
+      "label": "ng-serve",
+      "type": "shell",
+      "command": "npm start",
+      "options": {
+        "cwd": "${workspaceFolder}/${workspaceFolderBasename}.client",
+        "env": { "ASPNETCORE_URLS": "https://localhost:5001" }
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "angular",
+        "pattern": "$tsc",
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "Initial chunk files|Changes detected",
+          "endsPattern": "Local:|Failed to compile"
+        }
+      }
+    }
+  ]
+}
